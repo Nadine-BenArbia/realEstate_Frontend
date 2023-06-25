@@ -1,0 +1,54 @@
+/*heroSeaction */
+#heroImg{
+  margin-bottom: -11%;
+}
+
+
+
+/*landingpage*/
+.landing-page {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  
+  .landing-page h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+
+  .landing-page p {
+    font-size: xx-large;
+    margin-bottom: 20px;
+  }
+  
+  /* Button */
+  .landing-page button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #eb9d49;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+
+  .landing-page button:hover {
+    background-color: #2980b9;
+  }
+  
+  
+  .landing-page p:last-child {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  
+  
+  .landing-page footer {
+    font-size: 12px;
+    margin-top: 50px;
+    color: #888;
+  }
+  

@@ -1,0 +1,48 @@
+.Nav {
+    background-color:transparent;
+    padding: 10px;
+  }
+  
+  .Nav__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .Nav__brand {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .Nav__logo {
+    border-radius: 6%;
+    width: 134px;
+    height: 50px;
+  }
+  
+  .Nav__right {
+    margin-left: auto;
+  }
+  
+  .Nav__item-wrapper {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .Nav__item {
+    margin-right: 10px;
+  }
+  
+  .Nav__link {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .Nav__link:hover {
+    color: #666;
+  }
+  
