@@ -6,6 +6,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AllPosts from './components/AllPosts';
 import LandingPage from './components/LandingPage';
 import Nav from './components/Nav';
+import RegistrationForm from './components/Register';
+import ContactUs from './components/ContactUs';
+import UserOffer from './components/UserOffer';
 
 
 
@@ -32,8 +35,10 @@ function App() {
       <Switch>
         <Route path="/" exact component={LandingPage} />
         <Route path="/posts" render={() => <AllPosts data={data} />} />
-       
         <Route path="/login" component={LoginForm} />
+        <Route path="/UserOffer" render={() =><UserOffer/> } />
+        <Route path="/Register" render={() =><RegistrationForm/> } />
+        <Route path="/contactUs" render={()=><ContactUs/>}/>
       </Switch>
     </BrowserRouter>
   );

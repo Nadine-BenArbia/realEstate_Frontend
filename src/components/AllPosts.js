@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "../style/AllPost.css";
 import Search from "./Search";
+import AddPost from "./AddPost";
 const AllPosts = ({ data }) => {
+  const [posts, setPosts] = useState(data);
+
+  const addNewPost = (newPost) => {
+    setPosts((prevPosts) => [...prevPosts, newPost]);
+  };
   return (
     <div>
-      <Search data={data} />
+      <div className="topContainer">
+        <AddPost addPost={addNewPost} />
+        <Search data={data} />
+      </div>
 
       <div className="postsContainer">
         {data.map((post) => (

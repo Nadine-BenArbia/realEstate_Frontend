@@ -4,7 +4,7 @@ const Search = () => {
   return (
     <div className="Search">
       <input type="search" className="Search__input" />
-      <button className="Search__button">Search</button>
+      <button className="__button">Search</button>
     </div>
   );
 };

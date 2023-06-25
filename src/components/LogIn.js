@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import RegistrationForm from "./Register";
-
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import '../style/logIn.css'
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -9,20 +9,22 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     axios
       .post("http://127.0.0.1:5000/login", { email, password })
       .then((res) => {
-        console.log(res.data);
-        // Perform any necessary actions after successful login
+        console.log("first", res);
+        const userJson = JSON.stringify(res.data); 
+        localStorage.setItem("user", userJson); 
       })
       .catch((err) => {
         setError(err.message);
       });
   };
+  
 
   return (
-    <div className="container">
+    <div className="wrap">
       <div className="login-form">
         <h2>Login</h2>
         {error && <div className="error">{error}</div>}
@@ -30,6 +32,7 @@ const LoginForm = () => {
           <div className="form-group">
             <label htmlFor="email">Email:</label>
             <input
+            className="input"
               type="email"
               id="email"
               value={email}
@@ -45,14 +48,14 @@ const LoginForm = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit" className="btn-login">
-            Login
+          <div className="form-footer">
+          <button type="submit" className="btn-login" >
+          <Link id="link" to="/" >logIn</Link>
           </button>
+          <Link id="link" to="/Register" >Don’t Have an Account? Sign Up Here!</Link>
+          </div>
         </form>
-        <div>
-            <span>if you don't have account </span>
-            <RegistrationForm/>
-        </div>
+       
       </div>
     </div>
   );
