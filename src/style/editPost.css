@@ -1,21 +1,4 @@
-._button{
-  width: 8%;
-  margin: 2% 11%;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: none;
-    background-color: #333;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.wrap-card{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 2% 6%;
-}
-.popup {
+.edit-popup {
     position: fixed;
     top: 0;
     left: 0;
@@ -27,43 +10,40 @@
     justify-content: center;
   }
   
-  .popup-content {
+  .edit-popup-content {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     width: 400px;
     max-width: 90%;
-    max-height: 80vh; 
-    overflow-y: auto; 
+    max-height: 80vh;
+    overflow-y: auto;
   }
   
-  .close-icon {
+  .edit-close-icon {
     position: absolute;
-    top: 9%;
-    right: 37%;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
     font-weight: bold;
   }
   
-  .form {
-    display: flex;
-    flex-direction: column;
-  }
 
   
-
-.form {
+  .edit-form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    max-width: 350px;
-    background-color: #fff;
+    align-items: center;
     padding: 20px;
+    background-color: #fff;
     border-radius: 20px;
+    max-width: 350px;
+    gap: 10px;
     position: relative;
   }
+
   
-  .title {
+  .edit-title {
     font-size: 28px;
     color: royalblue;
     font-weight: 600;
@@ -74,7 +54,8 @@
     padding-left: 30px;
   }
   
-  .title::before,.title::after {
+  .edit-title::before,
+  .edit-title::after {
     position: absolute;
     content: "";
     height: 16px;
@@ -84,46 +65,19 @@
     background-color: royalblue;
   }
   
-  .title::before {
+  .edit-title::before {
     width: 18px;
     height: 18px;
     background-color: royalblue;
   }
   
-  .title::after {
+  .edit-title::after {
     width: 18px;
     height: 18px;
     animation: pulse 1s linear infinite;
   }
   
-  .message, .signin {
-    color: rgba(88, 87, 87, 0.822);
-    font-size: 14px;
-  }
-  
-  .signin {
-    text-align: center;
-  }
-  
-  .signin a {
-    color: royalblue;
-  }
-  
-  .signin a:hover {
-    text-decoration: underline royalblue;
-  }
-  
-  .flex {
-    display: flex;
-    width: 100%;
-    gap: 33px;
-  }
-  
-  .form label {
-    position: relative;
-  }
-  
-  .form label .formInput {
+  .edit-form-input {
     width: 100%;
     padding: 10px 10px 20px 10px;
     outline: 0;
@@ -131,7 +85,7 @@
     border-radius: 10px;
   }
   
-  .form label .formInput + span {
+  .edit-form-input + span {
     position: absolute;
     left: 10px;
     top: 15px;
@@ -141,22 +95,23 @@
     transition: 0.3s ease;
   }
   
-  .form label .formInput:placeholder-shown + span {
+  .edit-form-input:placeholder-shown + span {
     top: 15px;
     font-size: 0.9em;
   }
   
-  .form label .formInput:focus + span,.form label .formInput:valid + span {
+  .edit-form-input:focus + span,
+  .edit-form-input:valid + span {
     top: 30px;
     font-size: 0.7em;
     font-weight: 600;
   }
   
-  .form label .formInput:valid + span {
+  .edit-form-input:valid + span {
     color: #a26d0c;
   }
   
-  .submit {
+  .edit-submit {
     border: none;
     outline: none;
     background-color: royalblue;
@@ -165,10 +120,27 @@
     color: #fff;
     font-size: 16px;
     transform: .3s ease;
+    cursor: pointer;
   }
   
-  .submit:hover {
+  .edit-submit:hover {
     background-color: rgb(56, 90, 194);
+  }
+  
+  .edit-cancel {
+    border: none;
+    outline: none;
+    background-color: #f44336;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transform: .3s ease;
+    cursor: pointer;
+  }
+  
+  .edit-cancel:hover {
+    background-color: rgb(223, 52, 49);
   }
   
   @keyframes pulse {
@@ -182,3 +154,4 @@
       opacity: 0;
     }
   }
+  

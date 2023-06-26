@@ -1,13 +1,13 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 87vh;
   }
   
   .registration-form {
-    width: 400px;
-    padding: 20px;
+    width: 300px;
+    padding: 77px;
     background-color: #f8f8f8;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -41,18 +41,19 @@
   }
   
   .btn-register {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #4caf50;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
+    height: 50px;
+    width: 200px;
+    position: relative;
+    background-color: transparent;
     cursor: pointer;
-    transition: background-color 0.3s;
+    border: 2px solid #252525;
+    overflow: hidden;
+    border-radius: 30px;
+    color: #333;
+    transition: all 0.5s ease-in-out;
   }
   
   .btn-register:hover {
-    background-color: #45a049;
+    background-color: #caa51f;
   }
   

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-
 import "../style/addPost.css";
 import axios from "axios";
 
 const AddPost = () => {
+    const userJson = localStorage.getItem("user");
+    const user = JSON.parse(userJson);
+    const userId = user.user._id;
   const [showPopup, setShowPopup] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
@@ -14,48 +16,33 @@ const AddPost = () => {
     price: "",
     room: "",
     bathrooms: "",
-    status: "",
+    status: "For Sale",
+    user: userId,
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const newPost = {
-      title: formData.title,
-      img: formData.img,
-      desc: formData.desc,
-      location: formData.location,
-      availableAt: formData.availableAt,
-      price: formData.price,
-      room: formData.room,
-      bathrooms: formData.bathrooms,
-      status: formData.status,
-    };
-
-    axios.post("http://127.0.0.1:5000/posts")
-      .then((res) => console.log("success"))
+    setFormData({ ...formData, user: userId });
+    axios
+      .post("http://127.0.0.1:5000/post", formData)
+      .then((res) => {
+        console.log("success");
+        setFormData({
+          title: "",
+          img: "",
+          desc: "",
+          location: "",
+          availableAt: "",
+          price: "",
+          room: "",
+          bathrooms: "",
+          status: "For Sale",
+          user: userId,
+        });
+      })
       .catch((err) => console.error);
-
-    // Reset the form
-    setFormData({
-      title: "",
-      img: "",
-      desc: "",
-      location: "",
-      availableAt: "",
-      price: "",
-      room: "",
-      bathrooms: "",
-      status: "",
-    });
   };
 
   const openPopup = () => {
@@ -64,6 +51,10 @@ const AddPost = () => {
 
   const closePopup = () => {
     setShowPopup(false);
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
@@ -86,8 +77,8 @@ const AddPost = () => {
                     name="title"
                     value={formData.title}
                     onChange={handleChange}
+                    placeholder="Title"
                   />
-                  Title
                 </label>
                 <label>
                   <input
@@ -95,18 +86,18 @@ const AddPost = () => {
                     name="img"
                     value={formData.img}
                     onChange={handleChange}
+                    placeholder="Image URL"
                   />
-                  Image
                 </label>
               </div>
               <label>
-                <input
+                <textarea
                   className="formInput"
                   name="desc"
                   value={formData.desc}
                   onChange={handleChange}
+                  placeholder="Description"
                 />
-                Description
               </label>
               <label>
                 <input
@@ -114,53 +105,59 @@ const AddPost = () => {
                   name="location"
                   value={formData.location}
                   onChange={handleChange}
+                  placeholder="Location"
                 />
-                Location
               </label>
               <label>
                 <input
                   className="formInput"
                   name="availableAt"
+                  type="date"
                   value={formData.availableAt}
                   onChange={handleChange}
                 />
-                Available At
               </label>
               <label>
                 <input
                   className="formInput"
                   name="price"
+                  type="number"
                   value={formData.price}
                   onChange={handleChange}
+                  placeholder="Price"
                 />
-                Price
               </label>
               <label>
                 <input
                   className="formInput"
                   name="room"
+                  type="number"
                   value={formData.room}
                   onChange={handleChange}
+                  placeholder="Number of Rooms"
                 />
-                Room
               </label>
               <label>
                 <input
                   className="formInput"
                   name="bathrooms"
+                  type="number"
                   value={formData.bathrooms}
                   onChange={handleChange}
+                  placeholder="Number of Bathrooms"
                 />
-                Bathrooms
               </label>
               <label>
-                <input
+                <select
                   className="formInput"
                   name="status"
                   value={formData.status}
                   onChange={handleChange}
-                />
-                Status
+                >
+                  <option value="For Sale">For Sale</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Sold">Sold</option>
+                </select>
               </label>
               <button className="submit" type="submit">
                 Submit

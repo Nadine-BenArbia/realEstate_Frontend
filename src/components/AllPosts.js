@@ -1,14 +1,13 @@
 import React from "react";
 import "../style/AllPost.css";
-import Search from "./Search";
+// import Search from "./Search";
 const AllPosts = ({ data }) => {
  
   return (
     <div>
-      <div className="topContainer">
-        
+      {/* <div className="topContainer">
         <Search data={data} />
-      </div>
+      </div> */}
 
       <div className="postsContainer">
         {data.map((post) => (
