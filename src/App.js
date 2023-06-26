@@ -36,7 +36,7 @@ function App() {
         <Route path="/" exact component={LandingPage} />
         <Route path="/posts" render={() => <AllPosts data={data} />} />
         <Route path="/login" component={LoginForm} />
-        <Route path="/UserOffer" render={() =><UserOffer/> } />
+        <Route path="/UserOffer" render={() =><UserOffer data={data}/> } />
         <Route path="/Register" render={() =><RegistrationForm/> } />
         <Route path="/contactUs" render={()=><ContactUs/>}/>
       </Switch>

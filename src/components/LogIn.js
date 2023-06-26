@@ -1,27 +1,30 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import '../style/logIn.css'
+import { Link, useHistory } from "react-router-dom";
+import "../style/logIn.css";
+
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     axios
       .post("http://127.0.0.1:5000/login", { email, password })
       .then((res) => {
         console.log("first", res);
-        const userJson = JSON.stringify(res.data); 
-        localStorage.setItem("user", userJson); 
+        const userJson = JSON.stringify(res.data);
+        localStorage.setItem("user", userJson);
+        history.push("/"); 
+        window.location.reload();
       })
       .catch((err) => {
         setError(err.message);
       });
   };
-  
 
   return (
     <div className="wrap">
@@ -32,7 +35,7 @@ const LoginForm = () => {
           <div className="form-group">
             <label htmlFor="email">Email:</label>
             <input
-            className="input"
+              className="input"
               type="email"
               id="email"
               value={email}
@@ -49,13 +52,14 @@ const LoginForm = () => {
             />
           </div>
           <div className="form-footer">
-          <button type="submit" className="btn-login" >
-          <Link id="link" to="/" >logIn</Link>
-          </button>
-          <Link id="link" to="/Register" >Don’t Have an Account? Sign Up Here!</Link>
+            <button type="submit" className="btn-login">
+              logIn
+            </button>
+            <Link id="link" to="/Register">
+              Don't Have an Account? Sign Up Here!
+            </Link>
           </div>
         </form>
-       
       </div>
     </div>
   );

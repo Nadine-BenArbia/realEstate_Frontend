@@ -2,7 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../style/Nav.css";
 import logoImage from "./../assets/logo.jpg";
+
 const Nav = () => {
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    window.location.reload();
+  };
+
+  const isLoggedIn = localStorage.getItem("user");
+
   return (
     <nav className="Nav">
       <div className="Nav__container">
@@ -12,7 +20,7 @@ const Nav = () => {
 
         <div className="Nav__right">
           <ul className="Nav__item-wrapper">
-            {localStorage.length !== 0 && (
+            {isLoggedIn && (
               <li className="Nav__item">
                 <Link className="Nav__link" to="/UserOffer">
                   My Offer
@@ -30,11 +38,20 @@ const Nav = () => {
                 Contact Us
               </Link>
             </li>
-            <li className="Nav__item">
-              <Link className="Nav__link" to="/login">
-                LogIn
-              </Link>
-            </li>
+
+            {isLoggedIn ? (
+              <li className="Nav__item">
+                <Link className="Nav__link" to="/login" onClick={handleLogout}>
+                  Logout
+                </Link>
+              </li>
+            ) : (
+              <li className="Nav__item">
+                <Link className="Nav__link" to="/login">
+                  Login
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

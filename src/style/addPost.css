@@ -1,4 +1,13 @@
-/* Popup.css */
+._button{
+  width: 10%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
 .popup {
     position: fixed;

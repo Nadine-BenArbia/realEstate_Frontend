@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../style/Search.css";
+
 import "../style/addPost.css";
 import axios from "axios";
 
@@ -68,7 +68,7 @@ const AddPost = () => {
 
   return (
     <div>
-      <div className="__button" onClick={openPopup}>
+      <div className="_button" onClick={openPopup}>
         Add Offer
       </div>
       {showPopup && (
